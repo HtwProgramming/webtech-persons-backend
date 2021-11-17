@@ -4,11 +4,13 @@ public class PersonManipulationRequest {
 
     private String firstName;
     private String lastName;
+    private String gender;
     private boolean vaccinated;
 
-    public PersonManipulationRequest(String firstName, String lastName, boolean vaccinated) {
+    public PersonManipulationRequest(String firstName, String lastName, String gender, boolean vaccinated) {
         this.firstName = firstName;
         this.lastName = lastName;
+        this.gender = gender;
         this.vaccinated = vaccinated;
     }
 
@@ -34,5 +36,13 @@ public class PersonManipulationRequest {
 
     public void setVaccinated(boolean vaccinated) {
         this.vaccinated = vaccinated;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
     }
 }

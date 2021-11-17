@@ -1,5 +1,6 @@
 package de.htwberlin.webtech.service;
 
+import de.htwberlin.webtech.persistence.Gender;
 import de.htwberlin.webtech.persistence.PersonEntity;
 import de.htwberlin.webtech.persistence.PersonRepository;
 import de.htwberlin.webtech.web.api.Person;
@@ -31,7 +32,8 @@ public class PersonService {
     }
 
     public Person create(PersonManipulationRequest request) {
-        var personEntity = new PersonEntity(request.getFirstName(), request.getLastName(), request.isVaccinated());
+        var gender = Gender.valueOf(request.getGender());
+        var personEntity = new PersonEntity(request.getFirstName(), request.getLastName(), request.isVaccinated(), gender);
         personEntity = personRepository.save(personEntity);
         return transformEntity(personEntity);
     }
@@ -46,6 +48,7 @@ public class PersonService {
         personEntity.setFirstName(request.getFirstName());
         personEntity.setLastName(request.getLastName());
         personEntity.setVaccinated(request.isVaccinated());
+        personEntity.setGender(Gender.valueOf(request.getGender()));
         personEntity = personRepository.save(personEntity);
 
         return transformEntity(personEntity);
@@ -61,10 +64,12 @@ public class PersonService {
     }
 
     private Person transformEntity(PersonEntity personEntity) {
+        var gender = personEntity.getGender() != null ? personEntity.getGender().name() : Gender.UNKNOWN.name();
         return new Person(
                 personEntity.getId(),
                 personEntity.getFirstName(),
                 personEntity.getLastName(),
+                gender,
                 personEntity.getVaccinated()
         );
     }
