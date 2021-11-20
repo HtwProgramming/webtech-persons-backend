@@ -1,5 +1,7 @@
 package de.htwberlin.webtech.web.api;
 
+import java.util.List;
+
 public class Person {
 
     private long id;
@@ -7,15 +9,15 @@ public class Person {
     private String lastName;
     private String gender;
     private boolean vaccinated;
-    private Long petId;
+    private List<Long> petIds;
 
-    public Person(long id, String firstName, String lastName, String gender, boolean vaccinated, Long petId) {
+    public Person(long id, String firstName, String lastName, String gender, boolean vaccinated, List<Long> petIds) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.gender = gender;
         this.vaccinated = vaccinated;
-        this.petId = petId;
+        this.petIds = petIds;
     }
 
     public long getId() {
@@ -58,11 +60,11 @@ public class Person {
         this.gender = gender;
     }
 
-    public Long getPetId() {
-        return petId;
+    public List<Long> getPetIds() {
+        return petIds;
     }
 
-    public void setPetId(Long petId) {
-        this.petId = petId;
+    public void setPetIds(List<Long> petIds) {
+        this.petIds = petIds;
     }
 }

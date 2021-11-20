@@ -9,7 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 
 @Entity(name = "pets")
 public class PetEntity {
@@ -26,7 +26,7 @@ public class PetEntity {
   @Enumerated(value = EnumType.STRING)
   private Gender gender;
 
-  @OneToOne(cascade = CascadeType.MERGE)
+  @ManyToOne(cascade = CascadeType.MERGE)
   @JoinColumn(name = "owner_id", referencedColumnName = "id")
   private PersonEntity owner;
 

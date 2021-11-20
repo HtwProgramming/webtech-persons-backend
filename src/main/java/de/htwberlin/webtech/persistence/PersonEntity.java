@@ -1,6 +1,8 @@
 package de.htwberlin.webtech.persistence;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity(name = "persons")
 public class PersonEntity {
@@ -23,8 +25,8 @@ public class PersonEntity {
     @Enumerated(value = EnumType.STRING)
     private Gender gender;
 
-    @OneToOne(mappedBy = "owner")
-    private PetEntity pet;
+    @OneToMany(mappedBy = "owner", fetch = FetchType.EAGER)
+    private List<PetEntity> pets = new ArrayList<>();
 
     public PersonEntity(String firstName, String lastName, Boolean vaccinated, Gender gender) {
         this.firstName = firstName;
@@ -71,11 +73,11 @@ public class PersonEntity {
         this.gender = gender;
     }
 
-    public PetEntity getPet() {
-        return pet;
+    public List<PetEntity> getPets() {
+        return pets;
     }
 
-    public void setPet(PetEntity pet) {
-        this.pet = pet;
+    public void setPets(List<PetEntity> pets) {
+        this.pets = pets;
     }
 }
