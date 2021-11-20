@@ -23,6 +23,9 @@ public class PersonEntity {
     @Enumerated(value = EnumType.STRING)
     private Gender gender;
 
+    @OneToOne(mappedBy = "owner")
+    private PetEntity pet;
+
     public PersonEntity(String firstName, String lastName, Boolean vaccinated, Gender gender) {
         this.firstName = firstName;
         this.lastName = lastName;
@@ -66,5 +69,13 @@ public class PersonEntity {
 
     public void setGender(Gender gender) {
         this.gender = gender;
+    }
+
+    public PetEntity getPet() {
+        return pet;
+    }
+
+    public void setPet(PetEntity pet) {
+        this.pet = pet;
     }
 }

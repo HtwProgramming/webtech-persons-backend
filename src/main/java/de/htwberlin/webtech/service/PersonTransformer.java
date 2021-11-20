@@ -10,12 +10,13 @@ public class PersonTransformer {
 
   public Person transformEntity(PersonEntity personEntity) {
     var gender = personEntity.getGender() != null ? personEntity.getGender().name() : Gender.UNKNOWN.name();
+    var petId = personEntity.getPet() != null ? personEntity.getPet().getId() : null;
     return new Person(
             personEntity.getId(),
             personEntity.getFirstName(),
             personEntity.getLastName(),
             gender,
-            personEntity.getVaccinated()
-    );
+            personEntity.getVaccinated(),
+            petId);
   }
 }
