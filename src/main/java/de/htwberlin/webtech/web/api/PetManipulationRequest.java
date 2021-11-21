@@ -12,6 +12,8 @@ public class PetManipulationRequest {
     this.ownerId = ownerId;
   }
 
+  public PetManipulationRequest() {}
+
   public String getName() {
     return name;
   }
