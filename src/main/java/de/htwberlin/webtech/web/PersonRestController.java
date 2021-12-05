@@ -11,7 +11,6 @@ import java.net.URISyntaxException;
 import java.util.List;
 
 @RestController
-@CrossOrigin
 public class PersonRestController {
 
     private final PersonService personService;

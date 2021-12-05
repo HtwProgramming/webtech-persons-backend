@@ -4,7 +4,6 @@ import de.htwberlin.webtech.service.PetService;
 import de.htwberlin.webtech.web.api.Pet;
 import de.htwberlin.webtech.web.api.PetManipulationRequest;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -15,7 +14,6 @@ import java.net.URISyntaxException;
 import java.util.List;
 
 @RestController
-@CrossOrigin
 public class PetRestController {
 
   private final PetService petService;
