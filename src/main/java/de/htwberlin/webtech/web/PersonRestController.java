@@ -37,7 +37,10 @@ public class PersonRestController {
     public ResponseEntity<Void> createPerson(@Valid @RequestBody PersonManipulationRequest request) throws URISyntaxException {
         var person = personService.create(request);
         URI uri = new URI("/api/v1/persons/" + person.getId());
-        return ResponseEntity.created(uri).build();
+        return ResponseEntity
+            .created(uri)
+            .header("Access-Control-Expose-Headers", "Location")
+            .build();
     }
 
     @PutMapping(path = "/api/v1/persons/{id}")
